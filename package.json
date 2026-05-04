@@ -1,0 +1,18 @@
+{
+  "name": "raseed-trading-agent",
+  "version": "4.0.0",
+  "description": "Dynamic discovery trading agent — 15-layer research + Alpaca paper",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "telegraf": "^4.16.3",
+    "better-sqlite3": "^9.4.3",
+    "node-cron": "^3.0.3",
+    "@alpacahq/alpaca-trade-api": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
