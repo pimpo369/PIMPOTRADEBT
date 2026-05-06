@@ -70,7 +70,7 @@ if (getState("paused")     === null) setState("paused",     false);
 const BUDGET         = 200;
 const MAX_TOTAL_LOSS = 50;
 const MAX_POSITION   = 50;
-const MAX_POSITIONS  = 5;
+const MAX_POSITIONS  = 10;
 const STOP_STOCK     = 0.08;
 const STOP_CRYPTO    = 0.05;
 const MIN_VOTES      = 12;
@@ -541,7 +541,7 @@ async function getPortfolioSummary() {
 // TELEGRAM COMMANDS
 // ══════════════════════════════════════════════════════════
 bot.start(ctx=>ctx.replyWithHTML(
-  `🤖 <b>Raseed Trading Agent v4.2</b>\n\n` +
+  `🤖 <b>Raseed Trading Agent v4.3</b>\n\n` +
   `Mode: <b>Dynamic Discovery</b>\nAlpaca: <b>Paper Trading</b>\nThreshold: <b>${MIN_VOTES}/15 layers</b>\n\n` +
   `/portfolio — P&L and positions\n/scan — manual scan now\n/research AAPL — 15-layer check\n` +
   `/positions — open positions\n/history — last 10 closed\n/sync — re-sync from Alpaca\n` +
@@ -626,13 +626,13 @@ cron.schedule("0 6 * * 1-5", async()=>{
 
 // ── LAUNCH ────────────────────────────────────────────────
 bot.launch().then(async()=>{
-  console.log("🚀 Raseed Trading Agent v4.2 live");
+  console.log("🚀 Raseed Trading Agent v4.3 live");
 
   // Sync positions from Alpaca first — recovers after any redeploy
   const synced=await syncPositionsFromAlpaca();
 
   await tg(
-    `🚀 <b>Raseed Agent v4.2 Online</b>\n\n` +
+    `🚀 <b>Raseed Agent v4.3 Online</b>\n\n` +
     `${synced>0?`🔄 Recovered ${synced} position(s) from Alpaca\n`:""}` +
     `Budget: $${BUDGET} | Loss limit: $${MAX_TOTAL_LOSS}\n` +
     `Threshold: ${MIN_VOTES}/15 | Stops: ${STOP_STOCK*100}%/${STOP_CRYPTO*100}%\n\n` +
