@@ -1,6 +1,6 @@
 {
   "name": "raseed-trading-agent",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "description": "Dynamic discovery trading agent — 15-layer research + Alpaca paper",
   "main": "server.js",
   "scripts": {
