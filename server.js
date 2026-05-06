@@ -67,10 +67,10 @@ if (getState("total_loss") === null) setState("total_loss", 0);
 if (getState("paused")     === null) setState("paused",     false);
 
 // ── GUARDRAILS ────────────────────────────────────────────
-const BUDGET         = 200;
-const MAX_TOTAL_LOSS = 50;
-const MAX_POSITION   = 50;
-const MAX_POSITIONS  = 10;
+const BUDGET         = 500;
+const MAX_TOTAL_LOSS = 100;
+const MAX_POSITION   = 125;
+const MAX_POSITIONS  = 999; // No limit — trades freely within budget
 const STOP_STOCK     = 0.08;
 const STOP_CRYPTO    = 0.05;
 const MIN_VOTES      = 12;
