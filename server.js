@@ -413,7 +413,9 @@ async function executeTrade(r, via) {
 
   try {
     await alpaca.createOrder({
-      symbol: r.ticker.replace("USD",""), qty,
+      symbol: r.isCrypto
+  ? r.ticker.replace("USD","") + "/USD"
+  : r.ticker, qty,
       side:"buy", type:"market",
       time_in_force: r.isCrypto ? "gtc" : "day",
     });
