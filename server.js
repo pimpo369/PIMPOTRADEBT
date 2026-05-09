@@ -433,6 +433,13 @@ async function executeTrade(r, via) {
   const qty       = parseFloat((size/r.currentPrice).toFixed(6));
   const orderSym  = alpacaSymbol(r.ticker, r.isCrypto);
 
+  // SANITY CHECK: block if order size exceeds max by more than 5%
+  const expectedCost = qty * r.currentPrice;
+  if (expectedCost > MAX_POSITION * 1.05) {
+    await tg(`BLOCKED ${r.ticker}: order size $${expectedCost.toFixed(2)} exceeds max $${MAX_POSITION}. Stale price data detected.`);
+    return {skipped:true,reason:`Sanity check failed — $${expectedCost.toFixed(2)} > max $${MAX_POSITION}`};
+  }
+
   try {
     await alpaca.createOrder({
       symbol:        orderSym,
